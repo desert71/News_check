@@ -19,7 +19,8 @@ def index():
 def classify_text(title: str):
     dataa = cv.transform([title]).toarray()
     output = model.predict(dataa)
-    return f'Категория новостей: {output[0]}'
+    scor = model.predict_proba(dataa)
+    return f'Категория новостей: {output[0]}, вероятность: {scor.max()}'
 
 
 @app.get("/urls/")
@@ -28,8 +29,8 @@ def classify_url(url:HttpUrl):
     title = c[0]
     dataa = cv.transform([title]).toarray()
     output = model.predict(dataa)
-
-    return f'Категория новостей: {output[0]}'
+    scor = model.predict_proba(dataa)
+    return f'Категория новостей: {output[0]}, вероятность: {scor.max()}'
 
 def pars_title(url):
     r = requests.get(url)
