@@ -4,7 +4,7 @@
 * [server.py](server.py) contains API logic
 * [train.py](train.py) downloads the dataset and trains the model based on it
 
-## How to ran
+## How to run
 * Install and run Docker
 * Build Docker image using `docker build . -t news_check`
 * Run Docker container using `docker run --rm -it -p 8000:8000 news_check`
